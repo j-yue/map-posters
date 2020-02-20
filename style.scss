@@ -1,0 +1,137 @@
+@mixin flex($row, $wrap, $justify, $align) {
+    display: flex;
+    flex-flow: $row $wrap;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+$font-family: 'Nunito', 'Monsterrat', 'Raleway', sans-serif;
+$font-color: #4FEBC1;
+$tile-hover: #1F6277; 
+$active-tile: #388596;
+$bg-color: #084860;
+$customize-height: 25vh;
+$spacing: 5vh;
+$map-height: calc((100vh - #{$customize-height}));
+$slider-width: 35%;
+$coords-width: 30%;
+$download-width: 20%;
+
+
+
+html {
+    font-size: 16px;
+}
+
+body, ul {
+    padding: 0;
+    margin: 0;
+    font-family: $font-family;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: $bg-color;
+    color: $font-color;
+    font-weight: bold;
+    font-size: 1.25rem;
+    padding: .5rem;
+    @include flex(column, nowrap, space-evenly, space-evenly);
+}
+
+.customize {
+    @include flex(column, nowrap, space-evenly, center);
+}
+
+.tiles {
+    width: 100%;
+    @include flex(row, nowrap, space-evenly, center);
+}
+
+.tile {
+    list-style: none;
+    padding: .5rem;
+    transition: .5s;
+}
+
+.active-tile {
+    background: $active-tile;
+}
+
+.tile:hover {
+    background: $tile-hover;
+    cursor: pointer;
+}
+
+.second-row {
+    width: 100%;
+    @include flex(row, nowrap, space-evenly, center);
+    margin-bottom: .25rem;
+}
+
+.sliderContainer {
+    width: $slider-width;
+}
+
+.sliderContainer label {
+    display: inline-block;
+}
+
+.slider {
+    width: 80%;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+
+.slider-value {
+    width: 20%;
+    float: right;
+}
+
+
+input[type=number] {
+    font-size: inherit;
+    text-align: center;
+    border: none;
+    // padding: 2px;
+}
+
+
+.download {
+    width: $download-width;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.download:hover {
+    cursor: pointer;
+    background: $tile-hover;
+}
+
+.fa-download::after {
+    content: '\00a0';
+}
+
+#map {
+    height: $map-height;
+    flex-grow: 1;
+}

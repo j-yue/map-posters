@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+    integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/css/ol.css"
+    type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Nunito|Raleway&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/build/ol.js"></script>
+  <script>
+    const tiles = {
+      gray: 'https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+      toner: 'http://tile.stamen.com/toner/{z}/{x}/{y}.png',
+      terrain: 'http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
+      watercolor: 'http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
+    };
+
+    var mapSettings = {
+      lat: 36.06,
+      lon: -118.24,
+      tile: tiles.gray,
+      zoom: 4
+    }
+
+    var originalSettings = mapSettings;
+  </script>
+  <title>Map Posters</title>
+
+</head>
+
+<body>
+  <div class="customize">
+    <ul class="tiles">
+      <li class="tile gray active-tile">Gray</li>
+      <li class="tile toner">Black and White</li>
+      <li class="tile watercolor">Water Color</li>
+      <li class="tile terrain">Terrain</li>
+    </ul>
+
+    <div class="second-row">
+
+      <div class="sliderContainer">
+        <label for="slider">Zoom</label>
+        <span class="slider-value"></span>
+        <input type="range" min="1" max="16" value="4" class="slider" id="slider"> 
+      </div>
+
+      <!-- <div class="coords"> -->
+        <label for="lat">Lat</label>
+        <input type="number" id="lat" name="lat" value="36.06" min="-90" max="90" step="0.01">
+        <label for="lon">Lon</label>
+        <input type="number" id="lon" name="lon" value="-118.24" min="-180" max="180" step="0.01">
+      <!-- </div> -->
+
+      <button class="download"><i class="fas fa-download"></i>Download PNG</button>
+
+    </div>
+
+  </div>
+
+  <div class="map" id="map"></div>
+
+  <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+  <script type="text/javascript" src="map.js"></script>
+  <script type="text/javascript" src="controls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+  <script>
+    createMap(mapSettings);
+  </script>
+</body>
+
+</html>
