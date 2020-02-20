@@ -80,6 +80,10 @@ body {
     margin-bottom: .25rem;
 }
 
+label {
+    display: block;
+}
+
 .sliderContainer {
     width: $slider-width;
 }
@@ -100,10 +104,22 @@ body {
     transition: opacity .2s;
 }
 
+.slider:hover {
+    cursor: grab;
+}
+
+.slider:active {
+    cursor: grabbing;
+}
 
 .slider-value {
     width: 20%;
     float: right;
+}
+
+.coords {
+    @include flex(row, wrap, space-between, center);
+    width: 30%;
 }
 
 
@@ -111,7 +127,10 @@ input[type=number] {
     font-size: inherit;
     text-align: center;
     border: none;
-    // padding: 2px;
+}
+
+.lat-wrapper, .lon-wrapper, #lat, #lon {
+    width: 100%;
 }
 
 
@@ -120,6 +139,8 @@ input[type=number] {
     color: inherit;
     font-family: inherit;
     font-size: inherit;
+    padding: .25rem;
+    transition: .5s;
 }
 
 .download:hover {
@@ -134,4 +155,12 @@ input[type=number] {
 #map {
     height: $map-height;
     flex-grow: 1;
+}
+
+#map:hover {
+    cursor: grab;
+}
+
+#map:active {
+    cursor: grabbing;
 }
